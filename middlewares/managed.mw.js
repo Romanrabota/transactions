@@ -16,34 +16,41 @@ module.exports.getmanegedInstance= async (req, res, next) => {
         
         // Queries to be performed in the transaction:
 
-        // Find Rose's account, add 200 to her balance, then save
+        
 
-        const result = await sequelize.transaction(async (t) => {
+         const firstNameplus = req.body.firstNameplus;
+         const lastNameplus = req.body.lastNameplus;
 
-        let rose = await Account.findOne({
+
+         const firstNameminus = req.body.firstNameminus;
+         const lastNameminus = req.body.lastNameminus;
+
+        const result = await sequelize.transaction(async (transaction) => {
+
+        let Accountplus = await Account.findOne({
             where: {
-                firstName: 'Rose',
-                lastName: 'Tyler'
+                firstName: firstNameplus,
+                lastName: lastNameplus
             }
         });
-        await rose.update({
-            balance: rose.balance + 200
+        await Accountplus.update({
+            balance: Accountplus.balance + 200
         });
-        await rose.save();
+        await Accountplus.save();
 
-        // Find Amy's account, subtract 200 from her balance, then save
-        let amy = await Account.findOne({
+      
+        let Accountminus = await Account.findOne({
             where: {
-                firstName: 'Amy',
-                lastName: 'Pond'
+                firstName: firstNameminus,
+                lastName: lastNameminus
             }
         });
-        await amy.update({
-            balance: amy.balance - 200
+        await Accountminus.update({
+            balance: Accountminus.balance - 200
         },{
-            transaction: t
+            transaction
         });
-        await amy.save();
+        await Accountminus.save();
 
        
     });
