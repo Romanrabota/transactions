@@ -1,4 +1,4 @@
-// Current status of all accounts - DO NOT MODIFY
+// Current status of all accounts 
 const { Account, sequelize } = require('../models');
 
 module.exports.getaccountsInstance= async (req, res) => {

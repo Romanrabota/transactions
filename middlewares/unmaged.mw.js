@@ -1,25 +1,17 @@
-// Import environment variables in order to connect to database - DO NOT MODIFY
-//require('dotenv').config();
-
 // Import the models used in these routes - DO NOT MODIFY
 const { Account, sequelize } = require('../models');
 
 
-// STEP 1: Unmanaged Transaction
+// Unmanaged Transaction
 
 
 
 module.exports.getunmanegedInstance=async (req, res, next) => {
 
     const transaction = await sequelize.transaction();
-
-    // Unmanaged transactions are first saved to a variable
-    // Your code here
     try {
         // Queries to be performed in the transaction:
         
-       
-
         const firstNameplus = req.body.firstNameplus;
         const lastNameplus = req.body.lastNameplus;
           console.log("firstNameplus:",firstNameplus);

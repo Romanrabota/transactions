@@ -5,17 +5,9 @@ const { Account, sequelize } = require('../models');
 
 module.exports.getmanegedInstance= async (req, res, next) => {
 
-  //  const result = await sequelize.transaction(async (t) => {
-
+  
 
     try {
-        // Create a transaction with a callback function
-        // If the function executes successfully, the transaction is committed
-        
-        // Your code here
-        
-        // Queries to be performed in the transaction:
-
         
 
          const firstNameplus = req.body.firstNameplus;
