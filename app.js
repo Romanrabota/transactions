@@ -1,3 +1,4 @@
+
 //// Express Routing
 const express = require('express');
 const router = require('./routes/index.js'); 
@@ -11,4 +12,20 @@ app.use(bodyParser);
 app.use('/api',router);
 
 
-module.exports = app;
+
+//// SERVER
+const http = require('http');
+
+const PORT = process.env.PORT || 3000;
+
+const server = http.createServer(app);
+
+server.listen(PORT,() => {
+console.log(`App started on port ${PORT}`);    
+});
+
+
+
+
+
+
